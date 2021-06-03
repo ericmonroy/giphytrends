@@ -1,0 +1,129 @@
+$color3: #333;
+$morado: #b23cfd;
+$gris: #cecece;
+.card-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  .card {
+    border-radius: 18px;
+    width: 16rem;
+    height: auto;
+    background-color: #ebeef8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px;
+    padding: 0;
+    box-shadow: 0.3rem 0.3rem 2rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    &:nth-child(1) {
+      animation: fadeIn 0.5s 0.5s backwards;
+    }
+    &:nth-child(2) {
+      animation: fadeIn 0.5s 0.5s backwards;
+    }
+    &:nth-child(3) {
+      animation: fadeIn 0.5s 0.5s backwards;
+    }
+    &:nth-child(4) {
+      animation: fadeIn 0.5s 0.5s backwards;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 16rem;
+      object-fit: cover;
+    }
+    .info {
+      padding: 12px;
+      text-align: center;
+      width: 100%;
+      h1 {
+        font-size: 1.8rem;
+        color: $color3;
+        margin: 1rem 0;
+      }
+      small {
+        color: $morado;
+        font-family: monospace, sans-serif;
+        font-weight: 400;
+      }
+      .line {
+        width: 100%;
+        height: 1px;
+        background-color: $gris;
+      }
+      .title {
+        color: #777;
+        font-size: 1rem;
+        font-weight: 400;
+      }
+      .about {
+        font-size: 0.9rem;
+        line-height: normal;
+        margin: 1rem 0;
+        font-style: normal;
+        text-align: center;
+        font-weight: 300;
+        color: $color3;
+      }
+      .favorites {
+        width: 100%;
+        height: 50px;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        padding: 0.6rem 0 0 0;
+        margin-top: 0.5rem;
+        li {
+          a {
+            &:hover {
+              color: #777;
+            }
+            i {
+              font-size: 1rem;
+              transition: color 0.5s;
+              vertical-align: middle;
+              color: $morado;
+              margin-right: 4px;
+              &:hover {
+                color: $gris;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn-fav {
+  padding: 0.8rem;
+  background-color: #b23cfd;
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 32px;
+  width: 180px;
+  &:hover {
+    box-shadow: 0.1rem 0.1rem 2rem rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    color: #fafafa;
+  }
+}
