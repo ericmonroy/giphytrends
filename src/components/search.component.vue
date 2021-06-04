@@ -26,6 +26,7 @@ export default {
   margin-bottom: 15px;
   top: 10px;
 }
+
 .search {
   outline: none;
   width: 290px;
@@ -56,5 +57,19 @@ export default {
   font-weight: 700;
   font-size: 18px;
   height: 50px;
+}
+@media (min-width: 321px) and (max-width: 480px) {
+  .search {
+    outline: none;
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #c7c7c7;
+    border-radius: 5px;
+    font-family: monospace, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: #e7e7e7;
+    color: #000;
+  }
 }
 </style>

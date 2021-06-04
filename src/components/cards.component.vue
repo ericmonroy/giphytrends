@@ -59,6 +59,7 @@ export default {
       message: "",
       alert: false,
       offset: this.page,
+      param: [],
     };
   },
   components: {
@@ -135,7 +136,7 @@ export default {
         .writeText(copyLink)
         .then(() => {
           this.alert = true;
-          this.timerAlert(`Link copiado: ${copyLink}`);
+          this.timerAlert("Link copiado");
         })
         .catch((err) => {
           console.log(err);
@@ -158,6 +159,12 @@ export default {
     // Metodo que obtiene un numero de gifs por la query enviada
     searchCards(obj) {
       this.loading = true;
+      let a = {
+        id: Date.now(),
+        query: obj.query,
+      };
+      this.param.push(a);
+      localStorage.query = JSON.stringify(this.param);
       getSearch(obj)
         .then((data) => {
           this.cards = data;

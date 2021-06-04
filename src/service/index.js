@@ -5,13 +5,13 @@ import axios from "axios";
  */
 export const GLOBAL = {
   endpoints: {
-    search: "http://api.giphy.com/v1/gifs/search",
-    trending: "http://api.giphy.com/v1/gifs/trending",
-    translate: "http://api.giphy.com/v1/gifs/translate",
-    random: "http://api.giphy.com/v1/gifs/random",
-    webtrends: "https://webtrends-e4efc-default-rtdb.firebaseio.com/",
+    search: "https://api.giphy.com/v1/gifs/search",
+    trending: "https://api.giphy.com/v1/gifs/trending",
+    translate: "https://api.giphy.com/v1/gifs/translate",
+    random: "https://api.giphy.com/v1/gifs/random",
+    webtrends: "url-firebase-real-database",
   },
-  api_key: "KZXYHX8BdZbVjYir2r0PwXP2boh3J39K",
+  api_key: "",
 };
 
 /**

@@ -35,4 +35,9 @@ export default {
     text-align: center;
   }
 }
+@media (min-width: 320px) and (max-width: 480px) {
+  .alerts {
+    width: 98%;
+  }
+}
 </style>

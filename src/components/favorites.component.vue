@@ -44,6 +44,7 @@
           </ul>
         </div>
       </div>
+      <div></div>
     </div>
     <Alert v-bind:message="message" v-if="alert" id="alertComponent"></Alert>
     <Footer></Footer>
@@ -86,7 +87,7 @@ export default {
         .writeText(copyLink)
         .then(() => {
           this.alert = true;
-          this.timerAlert(`Link copiado: ${copyLink}`);
+          this.timerAlert("Link copiado");
         })
         .catch((err) => {
           console.log(err);
@@ -126,6 +127,12 @@ export default {
 
 <style lang="scss" scoped>
 h3 {
+  font-family: monospace, sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #000;
+}
+.brand {
   font-family: monospace, sans-serif;
   font-weight: 700;
   font-size: 1.6rem;

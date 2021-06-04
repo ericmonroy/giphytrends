@@ -1,6 +1,59 @@
 $color3: #333;
 $morado: #b23cfd;
 $gris: #cecece;
+$family: monospace, sans-serif;
+a {
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-property: color, border-color, background-color;
+  transition-property: color, border-color, background-color;
+  font-family: $family;
+  outline: none;
+
+  &:hover {
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-transition-property: color, border-color, background-color;
+    transition-property: color, border-color, background-color;
+    font-family: $family;
+    outline: none;
+  }
+}
+div,
+img {
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  outline: none;
+}
+
+button {
+  outline: none;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+strong {
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  font-family: $family;
+}
+
 .card-wrapper {
   display: flex;
   flex-direction: row;
@@ -112,6 +165,10 @@ $gris: #cecece;
     }
   }
 }
+.wraper
+{
+  width:100%
+}
 
 .btn-fav {
   padding: 0.8rem;
@@ -127,3 +184,11 @@ $gris: #cecece;
     color: #fafafa;
   }
 }
+@media (min-width: 321px) and (max-width: 480px) {
+  .btn-fav {
+    padding: 0.5rem;
+    width: 150px;
+  }
+}
+
+
