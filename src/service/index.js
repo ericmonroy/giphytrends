@@ -1,5 +1,8 @@
 import axios from "axios";
-
+/**
+ * @global
+ * @description url's de acceso publico.
+ */
 export const GLOBAL = {
   endpoints: {
     search: "http://api.giphy.com/v1/gifs/search",
@@ -11,10 +14,15 @@ export const GLOBAL = {
   api_key: "KZXYHX8BdZbVjYir2r0PwXP2boh3J39K",
 };
 
-export const getAll = async () => {
+/**
+ *@method GET
+ *@description Obtiene todos los gifs por la query dogs
+ *
+ */
+export const getAll = async (obj) => {
   try {
     const response = await axios.get(
-      `${GLOBAL.endpoints.search}?api_key=${GLOBAL.api_key}&q=dogs&limit=10&offset=0&rating=g&lang=en`
+      `${GLOBAL.endpoints.search}?api_key=${GLOBAL.api_key}&q=dogs&limit=${obj.limit}&offset=${obj.offset}&rating=g&lang=en`
     );
     return response.data.data;
   } catch (error) {
@@ -22,10 +30,15 @@ export const getAll = async () => {
   }
 };
 
-export const getSearch = async (query) => {
+/**
+ *@method GET
+ *@description Obtiene todos los gifs por la query enviada de tipo object
+ *
+ */
+export const getSearch = async (obj) => {
   try {
     const response = await axios.get(
-      `${GLOBAL.endpoints.search}?api_key=${GLOBAL.api_key}&q=${query}&limit=10&offset=0&rating=g&lang=en`
+      `${GLOBAL.endpoints.search}?api_key=${GLOBAL.api_key}&q=${obj.query}&limit=10&offset=${obj.offset}&rating=g&lang=en`
     );
     return response.data.data;
   } catch (error) {
@@ -33,6 +46,11 @@ export const getSearch = async (query) => {
   }
 };
 
+/**
+ *@method POST
+ *@description Guarda un objeto con los parametro de la imagen seleccionada
+ *
+ */
 export const postStorage = async (data) => {
   try {
     const response = await axios.post(
@@ -49,6 +67,11 @@ export const postStorage = async (data) => {
   }
 };
 
+/**
+ *@method GET
+ *@description Obtiene todas la imagenes  almacenas en favoritos
+ *
+ */
 export const getStorage = async () => {
   try {
     const response = await axios.get(

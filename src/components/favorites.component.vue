@@ -9,7 +9,7 @@
       <router-link to="/" exact class="d-flex">
         <MDBNavbarBrand href="#" class="brand">Giphy Trends</MDBNavbarBrand>
       </router-link>
-
+      <h3>Favoritos</h3>
       <form class="d-flex input-group w-auto">
         <router-link to="/" exact>
           <button type="button" class="btn-fav">Home</button>
@@ -79,6 +79,7 @@ export default {
   },
 
   methods: {
+    // metodo que copia la url de la imagen en el browser
     copyLink(id) {
       let copyLink = `https://media.giphy.com/media/${id}/giphy.gif`;
       navigator.clipboard
@@ -91,6 +92,8 @@ export default {
           console.log(err);
         });
     },
+
+    // Metodo que obtiene del store firebase  los gifs seleccionados
     getfavorites() {
       getStorage().then((data) => {
         for (let id in data) {
@@ -110,6 +113,7 @@ export default {
         }
       });
     },
+    // Metodo que efectua una animación de auto scroll
     timerAlert(msg) {
       this.message = msg;
       setTimeout(() => {
@@ -119,3 +123,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+h3 {
+  font-family: monospace, sans-serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #000;
+}
+</style>

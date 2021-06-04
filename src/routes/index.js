@@ -2,6 +2,8 @@ import { createWebHistory, createRouter } from "vue-router";
 import HomeComponent from "../components/home.component.vue";
 import FavoritesComponent from "../components/favorites.component.vue";
 
+
+/**rutas base */
 const routes = [
   {
     path: "/",

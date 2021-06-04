@@ -50,16 +50,15 @@ import Alert from "../components/alerts.component";
 
 export default {
   name: "cards-component",
-  props: ["page", "search"],
+  props: ["page", "search", "limit", "load"],
   data() {
     return {
       cards: "",
       favorites: [],
       loading: "",
-      limit: 5,
-      offset: this.page,
       message: "",
       alert: false,
+      offset: this.page,
     };
   },
   components: {
@@ -68,13 +67,19 @@ export default {
     Alert,
   },
   created() {
-    this.getCards();
+    this.getCards({
+      limit: this.limit,
+      offset: this.offset,
+      load: this.load,
+    });
   },
   watch: {
     page() {
-      console.log({
+      this.getCards({
         offset: this.page,
+        limit: this.limit,
       });
+      this.scrollTo();
     },
     search() {
       this.searchCards({
@@ -87,14 +92,18 @@ export default {
     addFavorite(id) {
       let add = `https://media.giphy.com/media/${id}/giphy.gif`;
       let data = { id: id, img: add };
+      // consultamos si existen imagenes en el store
       getStorage().then((response) => {
         for (let id in response) {
           let favorite = {
             id: response[id].id,
             img: response[id].img,
           };
+          // sea el resultado lo agregamos en un array
           this.favorites.push(favorite);
         }
+        // validamos si contiene algo
+        // si el array contiene objetos
         if (this.favorites.length > 0) {
           // mapeamos el array para extraer solo el id
           let items = this.favorites;
@@ -112,12 +121,14 @@ export default {
             // si no existe añadimos el item al item de la db
             postStorage(data);
           }
+          // si el array no contiene objetos
         } else if (this.favorites.length === 0) {
+          // agregamos uno
           postStorage(data);
         }
       });
     },
-
+    // metodo que copia la url de la imagen en el browser
     copyLink(id) {
       let copyLink = `https://media.giphy.com/media/${id}/giphy.gif`;
       navigator.clipboard
@@ -130,9 +141,11 @@ export default {
           console.log(err);
         });
     },
-    getCards() {
+
+    // Metodo que obtiene un numero de gifs por la query Dogs
+    getCards(obj) {
       this.loading = true;
-      getAll()
+      getAll(obj)
         .then((data) => {
           this.cards = data;
           this.loading = false;
@@ -141,9 +154,11 @@ export default {
           console.log(err);
         });
     },
-    searchCards(data) {
+
+    // Metodo que obtiene un numero de gifs por la query enviada
+    searchCards(obj) {
       this.loading = true;
-      getSearch(data.query)
+      getSearch(obj)
         .then((data) => {
           this.cards = data;
           this.loading = false;
@@ -152,11 +167,23 @@ export default {
           console.log(err);
         });
     },
+
+    // Metodo que muestra una alerta con el mensaje recibido
     timerAlert(msg) {
       this.message = msg;
       setTimeout(() => {
         this.alert = false;
       }, 2000);
+    },
+
+    // Metodo que efectua una animación de auto scroll
+    scrollTo() {
+      let i = 100;
+      let int = setInterval(function () {
+        window.scrollTo(0, i);
+        i += 100;
+        if (i >= 200) clearInterval(int);
+      }, 90);
     },
   },
 };
